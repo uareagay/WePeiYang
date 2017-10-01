@@ -11,14 +11,16 @@ import UIKit
 class AllModulesViewController: UIViewController {
     typealias ModuleData = (title: String, image: UIImage, class: AnyClass)
     fileprivate let modules: [ModuleData] = [
-        (title: "GPA", image: UIImage(named: "gpaBtn")!, class: GPAViewController.self),
-        (title: "课程表", image: UIImage(named: "classtableBtn")!, class: GPAViewController.self),
-        (title: "失物招领", image: UIImage(named: "lfBtn")!, class: GPAViewController.self),
-        (title: "自行车", image: UIImage(named: "bicycleBtn")!, class: GPAViewController.self),
-        (title: "党建", image: UIImage(named: "partyBtn")!, class: GPAViewController.self),
-        (title: "探索", image: UIImage(named: "msBtn")!, class: GPAViewController.self),
+//        (title: "GPA", image: UIImage(named: "gpaBtn")!, class: GPAViewController.self),
+//        (title: "课程表", image: UIImage(named: "classtableBtn")!, class: GPAViewController.self),
+//        (title: "失物招领", image: UIImage(named: "lfBtn")!, class: GPAViewController.self),
+//        (title: "自行车", image: UIImage(named: "bicycleBtn")!, class: GPAViewController.self),
+//        (title: "党建", image: UIImage(named: "partyBtn")!, class: GPAViewController.self),
+//        (title: "探索", image: UIImage(named: "msBtn")!, class: GPAViewController.self),
         (title: "阅读", image: UIImage(named: "readBtn")!, class: ReadViewController.self),
-        (title: "黄页", image: UIImage(named: "yellowPageBtn")!, class: YellowPageMainViewController.self)]
+        (title: "黄页", image: UIImage(named: "yellowPageBtn")!, class: YellowPageMainViewController.self),
+        (title: "宿舍报修", image: UIImage(named: "readBtn")!, class: EvaluateViewController.self)]
+    
     
     var collectionView: UICollectionView!
     // The below override will not be called if current viewcontroller is controlled by a UINavigationController
@@ -109,7 +111,12 @@ extension AllModulesViewController: UICollectionViewDelegate, UICollectionViewDa
         // instantiate a view controller by its class
         if let vc = (modules[indexPath.row].class as? UIViewController.Type)?.init() {
             vc.hidesBottomBarWhenPushed = true
+            
+//            let item = UIBarButtonItem(title: modules[indexPath.row].title, style: .plain, target: self, action: nil)
+//            self.navigationItem.backBarButtonItem = item
+
             self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
 }

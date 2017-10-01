@@ -78,7 +78,6 @@ struct SolaSessionManager {
         case .duo:
             method = .post
         }
-        
         Alamofire.request(fullurl, method: method, parameters: para, headers: headers).responseJSON { response in
             switch response.result {
             case .success:

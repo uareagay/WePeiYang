@@ -82,6 +82,7 @@ class CourseAppraiseCell: UITableViewCell, UITextViewDelegate {
             }
             let score = CourseAppraiseManager.shared.scoreArray[id]
             starView.stars[score-1].sendActions(for: .touchUpInside)
+//            starView.default = score
             starView.addObserver(self, forKeyPath: "rating", options: .new, context: &context)
             
             contentView.addSubview(detailImageButton)

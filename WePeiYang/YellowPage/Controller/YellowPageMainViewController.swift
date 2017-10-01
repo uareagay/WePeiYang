@@ -285,11 +285,13 @@ extension YellowPageMainViewController: UITableViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // FIXME: setBarColor
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         PhoneBook.shared.save()
+        
     }
 }

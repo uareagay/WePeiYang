@@ -19,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         // TWTUser.shared.load() // load token and so on
-        AccountManager.checkToken(failure: {
-            // 让他重新登录
-        })
+//        AccountManager.checkToken(failure: {
+//            // 让他重新登录
+//        })
+        AccountManager.getToken(username: "l1301913704", password: "7229339lys", success: nil, failure: nil)
         
         mainTabVC = WPYTabBarController()
         

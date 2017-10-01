@@ -1,19 +1,20 @@
 //
-//  StarView.swift
+//  ComplaintStarView.swift
 //  WePeiYang
 //
-//  Created by Allen X on 10/28/16.
-//  Copyright © 2016 Qin Yubo. All rights reserved.
+//  Created by 赵家琛 on 2017/9/5.
+//  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
 import UIKit
 
-class StarView: UIView {
+
+class ComplaintStarView: UIView {
     
     
-    let star_grey = "star_grey"
-    let star_red = "star_red"
-    let star_half = "star_half"
+    let star_gray = "star"
+    let star_yellow = "star的副本"
+    
     var starSize: CGFloat = 0
     
     dynamic var rating: Double = 0
@@ -54,13 +55,10 @@ class StarView: UIView {
         self.init()
         self.rating = rating
         self.starSize = height
-        //TODO: Add guard?
         
-        //OH MY GOODNESS THIS IS A GIANT BUG OR SOMETHING? LIKE 5 POINTERS POINTED TO THE SAME OBJECT
-        //stars = [UIImageView](count: 5, repeatedValue: UIImageView(imageName: star_grey, desiredSize: CGSize(width: height, height: height))!)
         
         for _ in 0..<5 {
-            stars.append(UIButton(backgroundImageName: star_grey, desiredSize: CGSize(width: height, height: height))!)
+            stars.append(UIButton(backgroundImageName: star_gray, desiredSize: CGSize(width: height, height: height))!)
         }
         
         
@@ -68,22 +66,11 @@ class StarView: UIView {
             stars[index].tag = index
         }
         
-        if Int(rating) > 0 {
             for i in 0..<Int(rating) {
-                var foo = UIImage(named: star_red)
+                var foo = UIImage(named: star_yellow)
                 foo = UIImage.resizedImage(image: foo!, scaledToSize: CGSize(width: height, height: height))
                 stars[i].setBackgroundImage(foo, for: .normal)
             }
-            if rating.rounded() - Double(Int(rating)) > 0 {
-                var foo = UIImage(named: star_half)
-                foo = UIImage.resizedImage(image: foo!, scaledToSize: CGSize(width: height, height: height))
-                stars[Int(rating)].setBackgroundImage(foo, for: .normal)
-            }
-        } else if rating.rounded() == 0.5 {
-            var foo = UIImage(named: star_half)
-            foo = UIImage.resizedImage(image: foo!, scaledToSize: CGSize(width: height, height: height))
-            stars[0].setBackgroundImage(foo, for: .normal)
-        }
         
         loadStars()
         if tappable {
@@ -96,40 +83,27 @@ class StarView: UIView {
 }
 
 
-extension StarView {
+extension ComplaintStarView {
     
     func starGetsTapped(sender: UIButton) {
-        //log.word("hello")/
+        
         self.rating = Double(sender.tag) + 1
         
-        //TODO: Chained Animation of the stars
-        //        let foo = self.stars[sender.tag].frame
-        //        UIView.animateWithDuration(0.7, animations: {
-        //            self.stars[sender.tag].frame = CGRect(x: foo.origin.x - 10, y: foo.origin.y - 10, width: foo.size.width * 2, height: foo.size.height * 2)
-        //            }) { (_) in
-        //                self.stars[sender.tag].frame = foo
-        //                self.stars[sender.tag-1].frame = CGRect(x: foo.origin.x - 10, y: foo.origin.y - 10, width: foo.size.width * 2, height: foo.size.height * 2)
-        //        }
-        
         for i in 0...sender.tag {
-            //stars[i] = UIButton(backgroundImageName: star_red, desiredSize: CGSize(width: tappedStar.bounds.width, height: tappedStar.bounds.height))!
-            //log.any(stars[i].frame)/
-            stars[i].setBackgroundImage(UIImage(named: star_red), for: .normal)
-            //log.any(stars[i].frame)/
+            stars[i].setBackgroundImage(UIImage(named: star_yellow), for: .normal)
         }
+        
         if sender.tag < 4 {
             for i in (sender.tag+1)...4 {
-                stars[i].setBackgroundImage(UIImage(named: star_grey), for: .normal)
+                stars[i].setBackgroundImage(UIImage(named: star_gray), for: .normal)
             }
         }
         
     }
     
     func assignGestures() {
-        //let tap = UITapGestureRecognizer(target: self, action: #selector(self.starGetsTapped))
         for star in stars {
             star.addTarget(self, action: #selector(self.starGetsTapped(sender:)), for: .touchUpInside)
-            //            log.word("gestures assigned")/
         }
     }
     

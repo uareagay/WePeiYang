@@ -82,6 +82,24 @@
 		B19DAB941E6EF5C2004A50B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B19DAB921E6EF5C2004A50B5 /* LaunchScreen.storyboard */; };
 		B19DAB9F1E6EF5C2004A50B5 /* WePeiYangTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DAB9E1E6EF5C2004A50B5 /* WePeiYangTests.swift */; };
 		B19DABAA1E6EF5C2004A50B5 /* WePeiYangUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DABA91E6EF5C2004A50B5 /* WePeiYangUITests.swift */; };
+		DD1798621F75F8C400AAE031 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1798611F75F8C400AAE031 /* ListCell.swift */; };
+		DD1798641F75F9F500AAE031 /* ListTabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1798631F75F9F500AAE031 /* ListTabelView.swift */; };
+		DD2D60511F7E3AF5006681D5 /* ThirdProgressRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2D60501F7E3AF5006681D5 /* ThirdProgressRateController.swift */; };
+		DD2D60531F7E4A84006681D5 /* FourProgressRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2D60521F7E4A84006681D5 /* FourProgressRateController.swift */; };
+		DD2D60551F7E50D0006681D5 /* FiveProgressRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2D60541F7E50D0006681D5 /* FiveProgressRateController.swift */; };
+		DD4EA35F1F69328E00FDE5F6 /* FirstProgressRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4EA35E1F69328E00FDE5F6 /* FirstProgressRateController.swift */; };
+		DD72BEE31F5E847D00765B33 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD72BEE21F5E847D00765B33 /* Article.swift */; };
+		DD72BF201F5ED33E00765B33 /* ComplaintStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD72BF1F1F5ED33E00765B33 /* ComplaintStarView.swift */; };
+		DD7884241F5E364600FA07C1 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884231F5E364600FA07C1 /* ImageData.swift */; };
+		DD7884261F5E366600FA07C1 /* ArticleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884251F5E366600FA07C1 /* ArticleTableView.swift */; };
+		DD7884281F5E368B00FA07C1 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884271F5E368B00FA07C1 /* ArticleTableViewCell.swift */; };
+		DD78842A1F5E36F700FA07C1 /* OperationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884291F5E36F700FA07C1 /* OperationDetail.swift */; };
+		DD78842C1F5E371500FA07C1 /* ComplaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78842B1F5E371500FA07C1 /* ComplaintViewController.swift */; };
+		DD78842E1F5E373200FA07C1 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78842D1F5E373100FA07C1 /* SubmitViewController.swift */; };
+		DD7884301F5E376500FA07C1 /* EvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78842F1F5E376500FA07C1 /* EvaluateViewController.swift */; };
+		DD78B1D11F7E23C200AC5477 /* SecondProgressRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78B1D01F7E23C200AC5477 /* SecondProgressRateController.swift */; };
+		DDBA35211F756B1100F55356 /* GetRepairApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA35201F756B1100F55356 /* GetRepairApi.swift */; };
+		DDD174DF1F5D6D3A000EE0A0 /* sss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD174DE1F5D6D3A000EE0A0 /* sss.swift */; };
 		EC0BD5E699D84DA808327744 /* Pods_WePeiYangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6749BFC82CF9191336C6C5 /* Pods_WePeiYangTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +209,24 @@
 		B19DABAB1E6EF5C2004A50B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5A8421277B4818318586CC1 /* Pods-WePeiYangTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WePeiYangTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WePeiYangTests/Pods-WePeiYangTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE7C0079EC8F44FEFBD147C0 /* Pods-WePeiYangUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WePeiYangUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WePeiYangUITests/Pods-WePeiYangUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD1798611F75F8C400AAE031 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		DD1798631F75F9F500AAE031 /* ListTabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTabelView.swift; sourceTree = "<group>"; };
+		DD2D60501F7E3AF5006681D5 /* ThirdProgressRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdProgressRateController.swift; sourceTree = "<group>"; };
+		DD2D60521F7E4A84006681D5 /* FourProgressRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourProgressRateController.swift; sourceTree = "<group>"; };
+		DD2D60541F7E50D0006681D5 /* FiveProgressRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiveProgressRateController.swift; sourceTree = "<group>"; };
+		DD4EA35E1F69328E00FDE5F6 /* FirstProgressRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstProgressRateController.swift; sourceTree = "<group>"; };
+		DD72BEE21F5E847D00765B33 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = DormitoryRepair/Article.swift; sourceTree = "<group>"; };
+		DD72BF1F1F5ED33E00765B33 /* ComplaintStarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComplaintStarView.swift; path = DormitoryRepair/ComplaintStarView.swift; sourceTree = "<group>"; };
+		DD7884231F5E364600FA07C1 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageData.swift; path = DormitoryRepair/ImageData.swift; sourceTree = "<group>"; };
+		DD7884251F5E366600FA07C1 /* ArticleTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableView.swift; path = DormitoryRepair/ArticleTableView.swift; sourceTree = "<group>"; };
+		DD7884271F5E368B00FA07C1 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableViewCell.swift; path = DormitoryRepair/ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		DD7884291F5E36F700FA07C1 /* OperationDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OperationDetail.swift; path = DormitoryRepair/OperationDetail.swift; sourceTree = "<group>"; };
+		DD78842B1F5E371500FA07C1 /* ComplaintViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComplaintViewController.swift; path = DormitoryRepair/ComplaintViewController.swift; sourceTree = "<group>"; };
+		DD78842D1F5E373100FA07C1 /* SubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmitViewController.swift; path = DormitoryRepair/SubmitViewController.swift; sourceTree = "<group>"; };
+		DD78842F1F5E376500FA07C1 /* EvaluateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EvaluateViewController.swift; path = DormitoryRepair/EvaluateViewController.swift; sourceTree = "<group>"; };
+		DD78B1D01F7E23C200AC5477 /* SecondProgressRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondProgressRateController.swift; sourceTree = "<group>"; };
+		DDBA35201F756B1100F55356 /* GetRepairApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRepairApi.swift; sourceTree = "<group>"; };
+		DDD174DE1F5D6D3A000EE0A0 /* sss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sss.swift; sourceTree = "<group>"; };
 		F9DF6854423B71BD48664450 /* Pods-WePeiYangTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WePeiYangTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WePeiYangTests/Pods-WePeiYangTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -317,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				B181B95D1EC5C24000B8198E /* AllModulesViewController.swift */,
+				DDD174DE1F5D6D3A000EE0A0 /* sss.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -524,6 +561,7 @@
 		B19DAB881E6EF5C2004A50B5 /* WePeiYang */ = {
 			isa = PBXGroup;
 			children = (
+				DD78841A1F5E34EC00FA07C1 /* DormitoryRepair */,
 				B10254091EC8520A0064373A /* main */,
 				B181B95E1EC5C24000B8198E /* NewsViewController.swift */,
 				B181B95B1EC5C23400B8198E /* SettingsViewController.swift */,
@@ -565,6 +603,30 @@
 				9C1A32CD4A3F1FB596836095 /* Pods_WePeiYangUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD78841A1F5E34EC00FA07C1 /* DormitoryRepair */ = {
+			isa = PBXGroup;
+			children = (
+				DD7884231F5E364600FA07C1 /* ImageData.swift */,
+				DD72BEE21F5E847D00765B33 /* Article.swift */,
+				DDBA35201F756B1100F55356 /* GetRepairApi.swift */,
+				DD7884271F5E368B00FA07C1 /* ArticleTableViewCell.swift */,
+				DD7884251F5E366600FA07C1 /* ArticleTableView.swift */,
+				DD1798611F75F8C400AAE031 /* ListCell.swift */,
+				DD1798631F75F9F500AAE031 /* ListTabelView.swift */,
+				DD4EA35E1F69328E00FDE5F6 /* FirstProgressRateController.swift */,
+				DD78B1D01F7E23C200AC5477 /* SecondProgressRateController.swift */,
+				DD2D60501F7E3AF5006681D5 /* ThirdProgressRateController.swift */,
+				DD2D60521F7E4A84006681D5 /* FourProgressRateController.swift */,
+				DD2D60541F7E50D0006681D5 /* FiveProgressRateController.swift */,
+				DD7884291F5E36F700FA07C1 /* OperationDetail.swift */,
+				DD78842B1F5E371500FA07C1 /* ComplaintViewController.swift */,
+				DD78842D1F5E373100FA07C1 /* SubmitViewController.swift */,
+				DD78842F1F5E376500FA07C1 /* EvaluateViewController.swift */,
+				DD72BF1F1F5ED33E00765B33 /* ComplaintStarView.swift */,
+			);
+			name = DormitoryRepair;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -644,7 +706,7 @@
 				TargetAttributes = {
 					B19DAB851E6EF5C2004A50B5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TYRRVX7RWJ;
+						DevelopmentTeam = 358P3P2LMY;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -855,6 +917,10 @@
 				365936901F1E60A9003CE578 /* GPAClassModel.swift in Sources */,
 				36073D081F223FC1001317A7 /* CoverView.swift in Sources */,
 				36073D0C1F223FC1001317A7 /* ReviewCell.swift in Sources */,
+				DD7884301F5E376500FA07C1 /* EvaluateViewController.swift in Sources */,
+				DD78842C1F5E371500FA07C1 /* ComplaintViewController.swift in Sources */,
+				DD78B1D11F7E23C200AC5477 /* SecondProgressRateController.swift in Sources */,
+				DD1798641F75F9F500AAE031 /* ListTabelView.swift in Sources */,
 				36073D1E1F225D2A001317A7 /* RecommendedViewController.swift in Sources */,
 				365936961F1E60A9003CE578 /* StarView.swift in Sources */,
 				36073D0D1F223FC1001317A7 /* Search.swift in Sources */,
@@ -867,6 +933,7 @@
 				B10254231EC8547E0064373A /* WPYTextField.swift in Sources */,
 				B181B95A1EC5C21700B8198E /* FavViewController.swift in Sources */,
 				3631D50A1F1903D70078816D /* TwTUser.swift in Sources */,
+				DD7884261F5E366600FA07C1 /* ArticleTableView.swift in Sources */,
 				36073D0A1F223FC1001317A7 /* ReadStarCell.swift in Sources */,
 				365936941F1E60A9003CE578 /* CourseAppraiseCell.swift in Sources */,
 				36073D0B1F223FC1001317A7 /* RecommendCell.swift in Sources */,
@@ -874,9 +941,13 @@
 				B181B95F1EC5C24000B8198E /* AllModulesViewController.swift in Sources */,
 				B181B9601EC5C24000B8198E /* NewsViewController.swift in Sources */,
 				365936711F1E38B8003CE578 /* YellowPageSearchHistoryCell.swift in Sources */,
+				DD72BEE31F5E847D00765B33 /* Article.swift in Sources */,
+				DDD174DF1F5D6D3A000EE0A0 /* sss.swift in Sources */,
+				DD4EA35F1F69328E00FDE5F6 /* FirstProgressRateController.swift in Sources */,
 				B10254051EC84EE00064373A /* PhoneBook.swift in Sources */,
 				B10254201EC8547E0064373A /* WPYBaseViewController.swift in Sources */,
 				B10253F11EC84ED90064373A /* CacheManager.swift in Sources */,
+				DD72BF201F5ED33E00765B33 /* ComplaintStarView.swift in Sources */,
 				B13F3AE81F0CEE5C00F820A5 /* FAB.swift in Sources */,
 				B10253FC1EC84ED90064373A /* DeviceStatus.swift in Sources */,
 				B10254241EC8547E0064373A /* WPYTextView.swift in Sources */,
@@ -887,26 +958,34 @@
 				3659368E1F1E60A9003CE578 /* GPAViewController.swift in Sources */,
 				365936911F1E60A9003CE578 /* GPASessionManager.swift in Sources */,
 				365936931F1E60A9003CE578 /* GPATermModel.swift in Sources */,
+				DD78842A1F5E36F700FA07C1 /* OperationDetail.swift in Sources */,
+				DD2D60551F7E50D0006681D5 /* FiveProgressRateController.swift in Sources */,
 				B10253F31EC84ED90064373A /* TwTKeychain.swift in Sources */,
 				36073D0E1F223FC1001317A7 /* SearchResultCell.swift in Sources */,
 				3659366D1F1E3637003CE578 /* CommonUsedView.swift in Sources */,
 				B102541D1EC8547E0064373A /* SpringButton.swift in Sources */,
+				DD7884241F5E364600FA07C1 /* ImageData.swift in Sources */,
 				365936951F1E60A9003CE578 /* ScoreHeaderView.swift in Sources */,
+				DD7884281F5E368B00FA07C1 /* ArticleTableViewCell.swift in Sources */,
 				3659367D1F1E5FAE003CE578 /* YellowPageSearchViewController.swift in Sources */,
 				3659366F1F1E37B8003CE578 /* SearchView.swift in Sources */,
 				36073D241F22713B001317A7 /* ReadViewController.swift in Sources */,
 				369306951F2B976C008E90DC /* ModuleCollectionViewCell.swift in Sources */,
+				DD1798621F75F8C400AAE031 /* ListCell.swift in Sources */,
 				B10253D81EC84ED20064373A /* MyBook.swift in Sources */,
 				36073D091F223FC1001317A7 /* RateView.swift in Sources */,
 				B10253D61EC84ED20064373A /* Book.swift in Sources */,
 				B10253F21EC84ED90064373A /* SolaSessionManager.swift in Sources */,
 				B10253DC1EC84ED20064373A /* Review.swift in Sources */,
+				DDBA35211F756B1100F55356 /* GetRepairApi.swift in Sources */,
+				DD78842E1F5E373200FA07C1 /* SubmitViewController.swift in Sources */,
 				365936921F1E60A9003CE578 /* GPAStatModel.swift in Sources */,
 				36073D101F223FC1001317A7 /* StatusInfoCell.swift in Sources */,
 				3659367B1F1E5FAE003CE578 /* YellowPageDetailViewController.swift in Sources */,
 				B102541E1EC8547E0064373A /* TabVCTransitioningAnimator.swift in Sources */,
 				36073D1F1F225D2A001317A7 /* ReviewListViewController.swift in Sources */,
 				36073D201F225D2A001317A7 /* SearchViewController.swift in Sources */,
+				DD2D60511F7E3AF5006681D5 /* ThirdProgressRateController.swift in Sources */,
 				B10253DB1EC84ED20064373A /* Recommender.swift in Sources */,
 				36073D071F223FC1001317A7 /* BookDetailViewControllerTempView.swift in Sources */,
 				B10254221EC8547E0064373A /* WPYTabBarController.swift in Sources */,
@@ -919,6 +998,7 @@
 				B10253DD1EC84ED20064373A /* User.swift in Sources */,
 				B10253F01EC84ED90064373A /* AccountManager.swift in Sources */,
 				36073D1C1F225D2A001317A7 /* InfoViewController.swift in Sources */,
+				DD2D60531F7E4A84006681D5 /* FourProgressRateController.swift in Sources */,
 				B10254041EC84EE00064373A /* ClientItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1065,11 +1145,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = TYRRVX7RWJ;
+				DEVELOPMENT_TEAM = 358P3P2LMY;
 				INFOPLIST_FILE = "$(SRCROOT)/WePeiYang/main/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.twt.WePeiYang;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.twt.WePeiYang.zhao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/WePeiYang/WePeiYang-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1083,11 +1163,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = TYRRVX7RWJ;
+				DEVELOPMENT_TEAM = 358P3P2LMY;
 				INFOPLIST_FILE = "$(SRCROOT)/WePeiYang/main/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.twt.WePeiYang;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.twt.WePeiYang.zhao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/WePeiYang/WePeiYang-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
