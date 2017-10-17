@@ -14,26 +14,31 @@ struct GetRepairApi {
     static func getRepair(success: @escaping([Article]) -> (), failure: (Error) -> ()) {
         
         SolaSessionManager.solaSession(type: .get, baseURL: "https://open.twtstudio.com", url: "/api/v1/repairs/order/show", token: (TwTUser.shared.token)!, parameters: nil, success: { dic in
-            //print(TwTUser.shared.token)
-            //print(dic)
+            
             var articles = [Article]()
+        
             if let articlesFromJson = dic["data"] as? [[String : AnyObject]] {
-                //print(dic)
+                
                 for articleFromJson in articlesFromJson {
-                    //print("ssssss")
+                    
                     let article = Article()
+                    if let ans = articleFromJson["complained"] as? Int {
+                        print("fuck you!!!")
+                        print(ans)
+                    }
                     if
-                        let id = articleFromJson["id"] as? Int,
+                        //let id = articleFromJson["id"] as? Int,
                         let detail = articleFromJson["detail"] as? String,
-                        let deleted = articleFromJson["deleted"] as? Int,
+                        //let deleted = articleFromJson["deleted"] as? Int,
                         let items = articleFromJson["items"] as? String ,
-                        let time = articleFromJson["created_at"] as? String,
-                        let state = articleFromJson["state"] as? Int,
-                        let complained = articleFromJson["complained"] as? Int
+                        let time = articleFromJson["created_at"] as? String
+                        //let state = articleFromJson["state"] as? Int,
+                        //let complained = articleFromJson["complained"] as? Int
                         //let place = articleFromJson["places"]
                         //complained state
                     {
-                        if(complained == 1) {
+                        print("fffffff")
+                        /*if(complained == 1) {
                             article.situationRepair = "已投诉"
                         } else {
                             if(state == 1) {
@@ -46,16 +51,17 @@ struct GetRepairApi {
                                 article.situationRepair = "已维修"
                             }
                         }
-                        
+                        */
                         
                         article.detailRepair = detail
                         article.itemsRepair = items
-                        print(time)
-                        let start = time.index(time.startIndex, offsetBy: 10)
-                        article.submitTimeRepair = time.substring(to: start)
-                        if(deleted == 0) {
+                        //print(time)
+                        //let start = time.index(time.startIndex, offsetBy: 10)
+                        //article.submitTimeRepair = time.substring(to: start)
+                        article.submitTimeRepair = time
+                        //if(deleted == 0) {
                             articles.append(article)
-                        }
+                        //}
                     }
                     
                     
@@ -63,7 +69,7 @@ struct GetRepairApi {
                 success(articles)
             }
         }, failure: { error in
-            
+            print("sadasd")
         })
     }
     

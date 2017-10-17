@@ -49,6 +49,7 @@ class ArticleTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(toSubmit), for: .touchUpInside)
         
+        print(TwTUser.shared.token ?? "fuck you TWT token")
         fetchArticles()
         print("\(self.articles.count)ascas")
     }
@@ -85,20 +86,22 @@ class ArticleTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func fetchArticles() {
+        
         GetRepairApi.getRepair(success: { (lists) in
+            print("aaaaaaa")
             self.articles = lists
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }, failure: { error in
-            print(error)
+            print("fuck")
         })
         
-        GetRepairApi.getDormitory(success: { (lists) in
+        /*GetRepairApi.getDormitory(success: { (lists) in
             
         }, failure: { error in
             print(error)
-        })
+        })*/
         
         
         

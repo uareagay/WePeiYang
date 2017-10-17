@@ -54,7 +54,7 @@ class FiveProgressRateController: UIViewController, UITableViewDelegate, UITable
         timeRepairLabel = UILabel(text: "报修时间", color: .darkGray)
         timeRepairLabel.font = UIFont.systemFont(ofSize: 11)
         itemLabel = UILabel()
-        itemLabel.font = UIFont.systemFont(ofSize: 11)
+        //itemLabel.font = UIFont.systemFont(ofSize: 11)
         itemLabel.textColor = .black
         detailLabel = UILabel()
         detailLabel.font = UIFont.systemFont(ofSize: 11)
@@ -186,6 +186,8 @@ class FiveProgressRateController: UIViewController, UITableViewDelegate, UITable
         }
         
         itemLabel.text = "灯管"
+        //itemLabel.font = UIFont.flexibleFont(ofBaseSize: 13)
+        itemLabel.font = UIFont.systemFont(ofSize: 13)
         detailLabel.text = "一个灯管坏了"
         locationLabel.text = "诚园7斋A栋427寝室"
         timeLabel.text = "2017-07-12 08:39:07"
@@ -311,3 +313,25 @@ class FiveProgressRateController: UIViewController, UITableViewDelegate, UITable
     }
     
 }
+
+//UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+
+//extension UIFont {
+//    static func flexibleFont(ofBaseSize size: CGFloat) -> UIFont {
+//        let width = UIScreen.main.bounds.width
+//        var flexSize = size
+//        if width <= 320 {
+//            // small size
+//            flexSize = size
+//            print("a")
+//        } else if width >= 414 {
+//            // big size
+//            flexSize = size*1.1
+//            print("b")
+//        }
+//        print("c")
+//        return UIFont.systemFont(ofSize: flexSize)
+//    }
+//}
+
+

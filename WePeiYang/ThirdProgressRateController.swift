@@ -70,7 +70,7 @@ class ThirdProgressRateController: UIViewController, UITableViewDelegate, UITabl
         //        image?.size = CGSize(width: self.view.bounds.size.width - 10, height: 10)
         //        imageView = UIImageView()
         //        imageView.image = image.re
-        imageView = UIImageView(image: ImageData.repairHalfImage)
+        imageView = UIImageView(image: ImageData.repairFullImage)
         labelOne = UILabel()
         labelTwo = UILabel()
         labelThree = UILabel()
@@ -198,8 +198,8 @@ class ThirdProgressRateController: UIViewController, UITableViewDelegate, UITabl
         }
         
         labelOne.text = "已上报"
-        labelOne.textColor = UIColor.green
-        labelOne.alpha = 0.5
+        labelOne.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelOne.alpha = 0.5
         labelOne.textAlignment = .center
         labelOne.font = UIFont.systemFont(ofSize: 10)
         labelOne.snp.makeConstraints { make in
@@ -210,8 +210,8 @@ class ThirdProgressRateController: UIViewController, UITableViewDelegate, UITabl
         }
         
         labelTwo.text = "已接受"
-        labelTwo.textColor = UIColor.black
-        labelTwo.alpha = 0.5
+        labelTwo.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelTwo.alpha = 0.5
         labelTwo.textAlignment = .center
         labelTwo.font = UIFont.systemFont(ofSize: 10)
         labelTwo.snp.makeConstraints { make in
@@ -222,8 +222,8 @@ class ThirdProgressRateController: UIViewController, UITableViewDelegate, UITabl
         }
         
         labelThree.text = "已维修"
-        labelThree.textColor = UIColor.black
-        labelThree.alpha = 0.5
+        labelThree.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelThree.alpha = 0.5
         labelThree.textAlignment = .center
         labelThree.font = UIFont.systemFont(ofSize: 10)
         labelThree.snp.makeConstraints { make in
@@ -283,7 +283,13 @@ class ThirdProgressRateController: UIViewController, UITableViewDelegate, UITabl
             make.height.equalTo(25)
             make.bottom.equalTo(-5)
         }
+        Button.addTarget(self, action: #selector(clickMe), for: .touchUpInside)
         
+    }
+    
+    func clickMe() -> Void {
+        let rvc = EvaluateViewController()
+        self.navigationController?.pushViewController(rvc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

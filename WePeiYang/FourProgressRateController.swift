@@ -199,8 +199,8 @@ class FourProgressRateController: UIViewController, UITableViewDelegate, UITable
         }
         
         labelOne.text = "已上报"
-        labelOne.textColor = UIColor.green
-        labelOne.alpha = 0.5
+        labelOne.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelOne.alpha = 0.5
         labelOne.textAlignment = .center
         labelOne.font = UIFont.systemFont(ofSize: 10)
         labelOne.snp.makeConstraints { make in
@@ -211,8 +211,8 @@ class FourProgressRateController: UIViewController, UITableViewDelegate, UITable
         }
         
         labelTwo.text = "已接受"
-        labelTwo.textColor = UIColor.black
-        labelTwo.alpha = 0.5
+        labelTwo.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelTwo.alpha = 0.5
         labelTwo.textAlignment = .center
         labelTwo.font = UIFont.systemFont(ofSize: 10)
         labelTwo.snp.makeConstraints { make in
@@ -223,8 +223,8 @@ class FourProgressRateController: UIViewController, UITableViewDelegate, UITable
         }
         
         labelThree.text = "已维修"
-        labelThree.textColor = UIColor.black
-        labelThree.alpha = 0.5
+        labelThree.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelThree.alpha = 0.5
         labelThree.textAlignment = .center
         labelThree.font = UIFont.systemFont(ofSize: 10)
         labelThree.snp.makeConstraints { make in
@@ -284,6 +284,7 @@ class FourProgressRateController: UIViewController, UITableViewDelegate, UITable
             make.height.equalTo(25)
             make.bottom.equalTo(-5)
         }
+        ButtonLeft.addTarget(self, action: #selector(clickMeOne), for: .touchUpInside)
         
         ButtonRight = UIButton(title: "有疑问？去投诉")
         subViewTwo.addSubview(ButtonRight)
@@ -298,7 +299,18 @@ class FourProgressRateController: UIViewController, UITableViewDelegate, UITable
             make.height.equalTo(25)
             make.bottom.equalTo(-5)
         }
+        ButtonRight.addTarget(self, action: #selector(clickMeTwo), for: .touchUpInside)
         
+    }
+    
+    func clickMeOne() -> Void {
+        let rvc = EvaluateViewController()
+        self.navigationController?.pushViewController(rvc, animated: true)
+    }
+    
+    func clickMeTwo() -> Void {
+        let rvc = ComplaintViewController()
+        self.navigationController?.pushViewController(rvc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

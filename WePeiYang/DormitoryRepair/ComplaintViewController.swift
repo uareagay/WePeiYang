@@ -122,8 +122,10 @@ class ComplaintViewController: UIViewController, UITextViewDelegate, UITextField
             make.top.equalTo(60)
         }
         complaintReasonTextField.font = UIFont.systemFont(ofSize: 13)
-        complaintReasonTextField!.backgroundColor = UIColor.white
-        complaintReasonTextField!.borderStyle = UITextBorderStyle.line
+        //complaintReasonTextField!.backgroundColor = UIColor.white
+        //complaintReasonTextField!.borderStyle = UITextBorderStyle.line
+        complaintReasonTextField.layer.borderColor = UIColor.lightGray.cgColor
+        complaintReasonTextField.layer.borderWidth = 1
         complaintReasonTextField!.textAlignment = .left
         
         complaintDetailTextView.snp.makeConstraints { make in
@@ -137,6 +139,7 @@ class ComplaintViewController: UIViewController, UITextViewDelegate, UITextField
         complaintDetailTextView.isSelectable = true
         complaintDetailTextView.textAlignment = .left
         complaintDetailTextView.layer.borderWidth = 1
+        complaintDetailTextView.layer.borderColor = UIColor.lightGray.cgColor
         complaintDetailTextView.font = UIFont.systemFont(ofSize: 13)
         
         complaintButton.snp.makeConstraints { make in
@@ -149,7 +152,7 @@ class ComplaintViewController: UIViewController, UITextViewDelegate, UITextField
         complaintButton.setTitleColor(UIColor.black, for: .normal)
         complaintButton.backgroundColor = UIColor(red: 254.0 / 255.0, green: 210.0 / 255.0, blue: 44.0 / 255.0, alpha: 1.0)
         complaintButton.addTarget(self, action: #selector(clickMe), for: .touchUpInside)
-        complaintButton.layer.cornerRadius = 10
+        complaintButton.layer.cornerRadius = 6
         complaintButton.alpha = 0.8
         
     }

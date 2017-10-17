@@ -69,7 +69,7 @@ class FirstProgressRateController: UIViewController, UITableViewDelegate, UITabl
 //        image?.size = CGSize(width: self.view.bounds.size.width - 10, height: 10)
 //        imageView = UIImageView()
 //        imageView.image = image.re
-        imageView = UIImageView(image: ImageData.repairHalfImage)
+        imageView = UIImageView(image: ImageData.updateImage)
         labelOne = UILabel()
         labelTwo = UILabel()
         labelThree = UILabel()
@@ -202,7 +202,7 @@ class FirstProgressRateController: UIViewController, UITableViewDelegate, UITabl
     
         labelOne.text = "已上报"
         labelOne.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
-        labelOne.alpha = 0.5
+        //labelOne.alpha = 0.5
         labelOne.textAlignment = .center
         labelOne.font = UIFont.systemFont(ofSize: 10)
         labelOne.snp.makeConstraints { make in

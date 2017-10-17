@@ -19,7 +19,7 @@ class AllModulesViewController: UIViewController {
 //        (title: "探索", image: UIImage(named: "msBtn")!, class: GPAViewController.self),
         (title: "阅读", image: UIImage(named: "readBtn")!, class: ReadViewController.self),
         (title: "黄页", image: UIImage(named: "yellowPageBtn")!, class: YellowPageMainViewController.self),
-        (title: "宿舍报修", image: UIImage(named: "readBtn")!, class: EvaluateViewController.self)]
+        (title: "宿舍报修", image: UIImage(named: "readBtn")!, class: FourProgressRateController.self)]
     
     
     var collectionView: UICollectionView!
