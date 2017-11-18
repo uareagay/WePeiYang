@@ -85,7 +85,7 @@ class YellowPageMainViewController: UIViewController {
                 self.tableView.reloadSections([1], with: .none)
             }
         }
-        self.navigationController?.navigationBar.barStyle = .black
+        //self.navigationController?.navigationBar.barStyle = .black
     }
     
     func searchToggle() {
@@ -292,6 +292,5 @@ extension YellowPageMainViewController: UITableViewDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         PhoneBook.shared.save()
-        
     }
 }

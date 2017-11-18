@@ -6,9 +6,7 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
 class ComplaintViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
@@ -21,6 +19,8 @@ class ComplaintViewController: UIViewController, UITextViewDelegate, UITextField
     var complaintTextViewLabelSecond: UILabel!
     var complaintTextFieldLabelFirst: UILabel!
     var complaintTextFieldLabelSecond: UILabel!
+    var id: String!
+    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,12 +155,54 @@ class ComplaintViewController: UIViewController, UITextViewDelegate, UITextField
         complaintButton.layer.cornerRadius = 6
         complaintButton.alpha = 0.8
         
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        
     }
     
     
     func clickMe() {
         
-        print("sefcwe")
+
+        if complaintReasonTextField.hasText && complaintDetailTextView.hasText{
+            
+            var dic: [String : Any] = [String : Any]()
+            dic["order_id"] = id
+            dic["reason"] = complaintReasonTextField.text
+            dic["detail"] = complaintDetailTextView.text
+            //dic["authorization"] = TwTUser.shared.token!
+            complaintButton.isEnabled = false
+            activityIndicator.startAnimating()
+            
+            UploadRepairApi.submitComplain(diction: dic, success: { (victory) in
+                self.activityIndicator.stopAnimating()
+                let vc = OperationDetail()
+                if victory == true {
+                    vc.check(submitSituation: true, complaintSituation: true, locationSituation: true)
+                    self.complaintButton.isEnabled = false
+                } else {
+                    vc.check(submitSituation: true, complaintSituation: false, locationSituation: true)
+                    self.complaintButton.isEnabled = true
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
+            }, failure: { error in
+                print(error)
+                complaintButton.isEnabled = true
+            })
+            
+        } else {
+            
+            let alert = UIAlertController(title: nil, message: "请确认填写信息无误", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.presentedViewController?.dismiss(animated: true, completion: nil)
+            }
+
+        }
+        
+        
+        
         
     }
     

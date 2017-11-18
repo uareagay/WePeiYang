@@ -6,10 +6,7 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
-class Article: NSObject {
+struct Article {
     var itemsRepair: String?
     var detailRepair: String?
     var locationRepair: String?
@@ -21,6 +18,17 @@ class Article: NSObject {
     var predictedRepair: String?
     var state: Int?
 }
+
+struct Apartment {
+    var id: String?
+    var name: String?
+}
+
+struct Room {
+    var type: String?
+    var name: String?
+}
+
 
 //报修项目
 //补充说明

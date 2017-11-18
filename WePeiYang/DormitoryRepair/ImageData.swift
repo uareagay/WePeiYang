@@ -6,7 +6,6 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct ImageData {
@@ -26,15 +25,3 @@ struct ImageData {
 //    static let star_gray = UIImage(named: "star")
 }
 
-//class sa {
-//    func m() {
-//        SolaSessionManager.solaSession(type: <#T##SessionType#>, baseURL: <#T##String#>, url: <#T##String#>, token: <#T##String?#>, parameters: <#T##Dictionary<String, String>?#>, success: { dict in
-//            <#code#>
-//        }, failure: <#T##((Error) -> ())?##((Error) -> ())?##(Error) -> ()#>)
-//    }
-//}
-
-
-
-// dic = ["id":"1", "name":"aaa"]
-// http://twtstudio.com/openapi/v1/status?

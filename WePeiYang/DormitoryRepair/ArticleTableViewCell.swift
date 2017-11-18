@@ -6,9 +6,7 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
 class ArticleTableViewCell: UITableViewCell {
     
@@ -66,7 +64,7 @@ class ArticleTableViewCell: UITableViewCell {
         locationLabel.snp.makeConstraints { make in
             make.left.equalTo(25)
             make.height.equalTo(20)
-            make.width.equalTo(100)
+            make.width.equalTo(250)
             make.top.equalTo(57)
         }
         locationLabel.text = "诚园7斋B栋3楼"
@@ -118,8 +116,6 @@ class ArticleTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        
-        
     }
     
     override var frame:CGRect{
@@ -134,8 +130,6 @@ class ArticleTableViewCell: UITableViewCell {
             super.frame = newFrame
         }
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

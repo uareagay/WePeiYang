@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        AccountManager.checkToken(failure: {
 //            // 让他重新登录
 //        })
-        AccountManager.getToken(username: "l1301913704", password: "7229339lys", success: nil, failure: nil)
+        //l1301913704
+        //7229339lys
+        AccountManager.getToken(username: "ABCCAONI", password: "xian123xian", success: nil, failure: nil)
         
         mainTabVC = WPYTabBarController()
         

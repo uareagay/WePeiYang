@@ -6,46 +6,44 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
 class ListCell: UITableViewCell {
     
-    var labelLeft: UILabel!
-    var labelRight: UILabel!
+    var leftLabel: UILabel!
+    var rightLabel: UILabel!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        labelLeft = UILabel()
-        labelRight = UILabel()
+        leftLabel = UILabel()
+        rightLabel = UILabel()
         
-        contentView.addSubview(labelLeft)
-        contentView.addSubview(labelRight)
+        contentView.addSubview(leftLabel)
+        contentView.addSubview(rightLabel)
         
-        labelLeft.snp.makeConstraints { make in
+        leftLabel.snp.makeConstraints { make in
             make.left.equalTo(8)
             make.top.equalTo(5)
             make.width.equalTo(70)
             make.height.equalTo(10)
         }
-//        labelLeft.text = "dsvesdvsv"
-        labelLeft.font = UIFont.systemFont(ofSize: 11)
-        labelLeft.textColor = UIColor.gray
+        //        labelLeft.text = "dsvesdvsv"
+        leftLabel.font = UIFont.systemFont(ofSize: 11)
+        leftLabel.textColor = UIColor.gray
         
-        labelRight.snp.makeConstraints { make in
+        rightLabel.snp.makeConstraints { make in
             make.right.equalTo(0)
             make.left.equalTo(100)
             make.top.equalTo(3)
             make.bottom.equalTo(0)
         }
-        labelRight.lineBreakMode = .byWordWrapping
-        labelRight.numberOfLines = 0
-//        labelRight.text = "jkgvnjrjagvnj\naafbv\narva\nrba\narva\narvrav]nrabvabv]narbvab]nrgvara]mrabr\nraegrae\nragvarwgvaw\nwrgwagvawg\ngvwa"
-        labelRight.font = UIFont.systemFont(ofSize: 11)
-        labelRight.adjustsFontSizeToFitWidth = true
-        labelRight.textColor = UIColor.black
+        rightLabel.lineBreakMode = .byWordWrapping
+        rightLabel.numberOfLines = 0
+        //        labelRight.text = "jkgvnjrjagvnj\naafbv\narva\nrba\narva\narvrav]nrabvabv]narbvab]nrgvara]mrabr\nraegrae\nragvarwgvaw\nwrgwagvawg\ngvwa"
+        rightLabel.font = UIFont.systemFont(ofSize: 11)
+        rightLabel.adjustsFontSizeToFitWidth = true
+        rightLabel.textColor = UIColor.black
         
         self.selectionStyle = .none
     }
@@ -63,3 +61,4 @@ class ListCell: UITableViewCell {
     }
     
 }
+

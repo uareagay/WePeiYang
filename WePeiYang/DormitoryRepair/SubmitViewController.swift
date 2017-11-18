@@ -6,11 +6,9 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
-class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SubmitViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var subView: UIView!
     var submitWarningLabel: UILabel!
@@ -24,28 +22,28 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var roomTextField: UITextField!
     var itemTextField: UITextField!
     var submitInformationDetailTextField: UITextField!
-    var buildingOption = ["正园九斋", "正园十斋", "齐园六斋"]
-    var roomOption = ["219", "220", "432"]
-    var itemOption = ["椅子", "墙壁", "水龙头"]
+    var buildingOption = [Apartment]()
+    var roomOption = [Room]()
+    var itemOption = [String]()
     var nameTextField: UITextField!
     var telephoneTextField: UITextField!
     var submitImageButton: UIButton!
     var imageOfSubmit: UIImage = ImageData.rapairPhotoImage!
+    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 //        
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        var buildingPickerView = UIPickerView()
+        let buildingPickerView = UIPickerView()
         buildingPickerView.delegate = self
-        var roomPickerView = UIPickerView()
+        let roomPickerView = UIPickerView()
         roomPickerView.delegate = self
-        var itemPickerView = UIPickerView()
+        let itemPickerView = UIPickerView()
         itemPickerView.delegate = self
-        //
+        
         buildingTextField = UITextField()
         buildingTextField.placeholder = "宿舍楼"
         buildingTextField.font = UIFont.systemFont(ofSize: 12)
@@ -116,6 +114,7 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             make.left.equalTo(15)
             make.right.equalTo(-15)
         }
+        //itemTextField.tag = 0
         
         subView.frame = view.bounds
         subView.backgroundColor = UIColor.white
@@ -218,7 +217,6 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         nameTextField.tag = 1
         
-        
         let attrTelephoneString = NSMutableAttributedString(string: "联系电话*", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)])
         let telephoneRange = NSRange(location: 4, length: 1)
         attrTelephoneString.addAttributes([NSForegroundColorAttributeName: UIColor.red], range: telephoneRange)
@@ -257,60 +255,108 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         submitButton.layer.cornerRadius = 5
         submitButton.addTarget(self, action: #selector(clickMe), for: .touchUpInside)
-        
+        getApartment()
         self.view.backgroundColor = .white
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+    }
+    
+    func getApartment() {
+        GetRepairApi.getApartmenBuilding(success: { (lists) in
+            self.buildingOption = lists
+        }, failure: { error in
+            print(error)
+        })
+    }
+    
+    func isTelNumber(str:String)->Bool {
+        
+        let num: NSString = str as NSString
+        let mobile = "^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$"
+        let  CM = "^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$"
+        let  CU = "^1(3[0-2]|5[256]|8[56])\\d{8}$"
+        let  CT = "^1((33|53|8[09])[0-9]|349)\\d{7}$"
+        let regextestmobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        let regextestcm = NSPredicate(format: "SELF MATCHES %@",CM )
+        let regextestcu = NSPredicate(format: "SELF MATCHES %@" ,CU)
+        let regextestct = NSPredicate(format: "SELF MATCHES %@" ,CT)
+        if ((regextestmobile.evaluate(with: num) == true)
+            || (regextestcm.evaluate(with: num)  == true)
+            || (regextestct.evaluate(with: num) == true)
+            || (regextestcu.evaluate(with: num) == true)) {
+            return true
+        } else {
+            return false
+        }
+        
     }
     
     func clickMe() {
-        if buildingTextField.hasText == true && roomTextField.hasText == true && itemTextField.hasText == true && submitInformationDetailTextField.hasText == true && nameTextField.hasText == true && telephoneTextField.hasText == true {
-            print("asfc")
-            let rvc = OperationDetail()
-            rvc.check(submitSituation: true, complaintSituation: false, locationSituation: false)
-            self.navigationController?.pushViewController(rvc, animated: true)
+        if buildingTextField.hasText == true && roomTextField.hasText == true && itemTextField.hasText == true && submitInformationDetailTextField.hasText == true && nameTextField.hasText == true && telephoneTextField.hasText == true && isTelNumber(str: telephoneTextField.text!) {
+
+//           let alert = UIAlertController(title: nil, message: "正在提交，请稍等～～", preferredStyle: .alert)
+//            self.present(alert, animated: true, completion: nil)
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 8) {
+//                self.presentedViewController?.dismiss(animated: true, completion: nil)
+//            }
+            
+            activityIndicator.startAnimating()
+
+            var dic: [String : Any] = [String : Any]()
+
+            var areaID: String = "fuck"
+            for area in buildingOption {
+                if area.name == buildingTextField.text {
+                    areaID = area.id!
+                    break
+                }
+            }
+
+            dic["area_id"] = areaID
+            dic["campus_id"] = "1"
+            dic["room"] = roomTextField.text
+            dic["items"] = itemTextField.text
+            dic["detail"] = submitInformationDetailTextField.text
+            dic["phone"] = telephoneTextField.text
+        
+            if submitImageButton.currentImage != ImageData.rapairPhotoImage {
+                dic["image"] = submitImageButton.currentImage!
+            }
+            
+            submitButton.isEnabled = false
+
+            UploadRepairApi.submitRepair(diction: dic, success: { (victory) in
+                self.activityIndicator.stopAnimating()
+                
+                let operationVC = OperationDetail()
+                if victory == true {
+                    operationVC.check(submitSituation: true, complaintSituation: true, locationSituation: false)
+                } else {
+                    operationVC.check(submitSituation: false, complaintSituation: true, locationSituation: false)
+                    self.submitButton.isEnabled = true
+                }
+                
+                self.navigationController?.pushViewController(operationVC, animated: true)
+            }, failure: { error in
+                print(error)
+                self.submitButton.isEnabled = true
+            })
+        
         } else {
-            print("addad")
-            let alert = UIAlertController(title: nil, message: "不要搞事情哦～", preferredStyle: .alert)
+            
+            let alert = UIAlertController(title: nil, message: "请确认填写信息无误", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                 self.presentedViewController?.dismiss(animated: true, completion: nil)
             }
         }
+//        self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
 
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if buildingTextField.inputView == pickerView {
-            return buildingOption.count
-        } else if roomTextField.inputView == pickerView {
-            return roomOption.count
-        } else {
-            return itemOption.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if buildingTextField.inputView == pickerView {
-            return buildingOption[row]
-        } else if roomTextField.inputView == pickerView {
-            return roomOption[row]
-        } else {
-            return itemOption[row]
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if buildingTextField.inputView == pickerView {
-            buildingTextField.text = buildingOption[row]
-        } else if roomTextField.inputView == pickerView {
-            roomTextField.text = roomOption[row]
-        } else {
-            itemTextField.text = itemOption[row]
-        }
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //self.subView.frame = self.view.bounds
@@ -330,16 +376,7 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
         self.view.endEditing(true)
     }
-//    func keyboardWillShow(sender: NSNotification) {
-//        //self.view.frame.origin.y = -230 // Move view 150 points upward
-//        subView.frame.origin.y = -self.view.frame.size.height / 4
-//    }
-//    
-//    func keyboardWillHide(sender: NSNotification) {
-//        //self.view.frame.origin.y = 0 // Move view to original position
-//        subView.frame.origin.y = 0
-//    }
-//    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField.tag == 0 {
             return true
@@ -371,6 +408,12 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return newLength <= 30
         
     }
+    
+}
+
+
+
+extension SubmitViewController: UIImagePickerControllerDelegate {
     
     func tosubmitImage() {
         
@@ -412,7 +455,7 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 }
             }
         }
-
+        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         
         alertVC.addAction(pictureAction)
@@ -429,7 +472,60 @@ class SubmitViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         picker.dismiss(animated: true, completion: nil)
     }
     
+}
+
+
+
+extension SubmitViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if buildingTextField.inputView == pickerView {
+            return buildingOption.count
+        } else if roomTextField.inputView == pickerView && buildingTextField.hasText{
+            return roomOption.count
+        } else if itemTextField.inputView == pickerView && buildingTextField.hasText && roomTextField.hasText {
+            return itemOption.count
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if buildingTextField.inputView == pickerView {
+            return buildingOption[row].name
+        } else if roomTextField.inputView == pickerView && buildingTextField.hasText{
+            return roomOption[row].name
+        } else if itemTextField.inputView == pickerView && buildingTextField.hasText && roomTextField.hasText {
+            return itemOption[row]
+        }
+        return nil
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if buildingTextField.inputView == pickerView {
+            roomTextField.text = ""
+            itemTextField.text = ""
+            buildingTextField.text = buildingOption[row].name
+            GetRepairApi.getApartmenRoom(id: buildingOption[row].id!, success: {
+                (lists) in
+                self.roomOption = lists
+            }, failure: { error in
+                print(error)
+            })
+        } else if roomTextField.inputView == pickerView && buildingTextField.hasText{
+            itemTextField.text = ""
+            roomTextField.text = roomOption[row].name
+            GetRepairApi.getItemType(type: roomOption[row].type!, success: { (lists) in
+                self.itemOption = lists
+            }, failure: { error in
+                print(error)
+            })
+        } else if itemTextField.inputView == pickerView && buildingTextField.hasText && roomTextField.hasText {
+            itemTextField.text = itemOption[row]
+        }
+    }
     
 }

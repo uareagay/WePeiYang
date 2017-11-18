@@ -6,14 +6,13 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
-import SnapKit
 
 class OperationDetail: UIViewController {
-    var submit: Bool = false
-    var complaint: Bool = false
-    var location: Bool = false
+    var isSubmit: Bool = false
+    var isComplaint: Bool = false
+    var isLocation: Bool = false
     var label: UILabel?
     var image: UIImage?
     var imageView: UIImageView?
@@ -26,26 +25,27 @@ class OperationDetail: UIViewController {
     
     func check(submitSituation: Bool, complaintSituation: Bool, locationSituation: Bool) {
         subView = UIView()
-        submit = submitSituation
-        complaint = complaintSituation
-        location = locationSituation
-        if(location) {
-            if complaint {
-                //complaint: true, location: true
+        isSubmit = submitSituation
+        isComplaint = complaintSituation
+        isLocation = locationSituation
+        if isLocation {
+            if isComplaint {
+                //isComplaint: true, isLocation: true
                 content += "您的投诉需求已提交，我们将会认真对待"
                 image = UIImage(named: "repair_success.png")
+                
             } else {
-                //complaint: false, location: true;
+                //isComplaint: false, isLocation: true;
                 content += "您的投诉信息提交失败，如有需要请发邮件至邮箱1919537704@qq.com"
                 image = UIImage(named: "repair_fail.png")
             }
         } else {
-            if submit {
-                //submit: true, location: false
+            if isSubmit {
+                //isSubmit: true, isLocation: false
                 content += "您的报修需求已提交，通常维修方法将在一个工作日内给予应答，否则系统将自动重新提交，请耐心等候～"
                 image = UIImage(named: "repair_success.png")
             } else {
-                //submit: false, location: false
+                //isSubmit: false, isLocation: false
                 content += "您的报修信息提交失败，请稍后尝试"
                 image = UIImage(named: "repair_fail.png")
             }
@@ -59,7 +59,6 @@ class OperationDetail: UIViewController {
         label?.backgroundColor = UIColor.white
         label?.textAlignment = .center
         
-        
         imageView = UIImageView()
         imageView?.image = image
         imageView?.backgroundColor = UIColor.white
@@ -69,7 +68,6 @@ class OperationDetail: UIViewController {
         self.view.addSubview(subView)
         subView.backgroundColor = UIColor.white
         self.view.backgroundColor = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
-        
         
         subView.snp.makeConstraints { make in
             make.left.equalTo(5)
@@ -91,9 +89,24 @@ class OperationDetail: UIViewController {
             make.top.equalTo(10)
         }
         
-        
     }
     
+//    self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //返回首页
+        if isLocation {
+            if isComplaint {
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+            }
+        } else {
+            if isSubmit {
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+            }
+        }
+    }
     
     
 }

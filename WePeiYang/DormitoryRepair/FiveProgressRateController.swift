@@ -1,49 +1,49 @@
 //
-//  SecondProgressRateController.swift
+//  FiveProgressRateController.swift
 //  WePeiYang
 //
 //  Created by 赵家琛 on 2017/9/29.
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
-class SecondProgressRateController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FiveProgressRateController: UIViewController {
     
     var tabelView: UITableView!
-    var subViewOne: UIView!
-    var subViewTwo: UIView!
-    var subViewThree: UIView!
+    var oneSubView: UIView!
+    var twoSubView: UIView!
+    var threeSubView: UIView!
     var itemRepairLabel: UILabel!
-    var itemLabel: UILabel!
+    var itemLabel: UILabel = UILabel()
     var detailRepairLabel: UILabel!
-    var detailLabel: UILabel!
+    var detailLabel: UILabel = UILabel()
     var locationRepairLabel: UILabel!
-    var locationLabel: UILabel!
+    var locationLabel: UILabel = UILabel()
     var timeRepairLabel: UILabel!
-    var timeLabel: UILabel!
+    var timeLabel: UILabel = UILabel()
     var imageView: UIImageView!
-    var labelOne: UILabel!
-    var labelTwo: UILabel!
-    var labelThree: UILabel!
-    var labelFour: UILabel!
+    var oneLabel: UILabel!
+    var twoLabel: UILabel!
+    var threeLabel: UILabel!
+    var fourLabel: UILabel!
     var stateRepairLabel: UILabel!
     var numberRepairLabel: UILabel!
     var stateLabel: UILabel!
     var numberLabel: UILabel!
     var Button: UIButton!
+    var list: [String] = [String]()
+    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
         
-        subViewOne = UIView(color: .white)
-        subViewOne.layer.cornerRadius = 5
-        subViewTwo = UIView(color: .white)
-        subViewTwo.layer.cornerRadius = 5
-        subViewThree = UIView(color: UIColor.gray)
+        oneSubView = UIView(color: .white)
+        oneSubView.layer.cornerRadius = 5
+        twoSubView = UIView(color: .white)
+        twoSubView.layer.cornerRadius = 5
+        threeSubView = UIView(color: UIColor.gray)
         
         itemRepairLabel = UILabel(text: "报修项目", color: .darkGray)
         itemRepairLabel.font = UIFont.systemFont(ofSize: 11)
@@ -54,7 +54,7 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
         timeRepairLabel = UILabel(text: "报修时间", color: .darkGray)
         timeRepairLabel.font = UIFont.systemFont(ofSize: 11)
         itemLabel = UILabel()
-        itemLabel.font = UIFont.systemFont(ofSize: 11)
+        //itemLabel.font = UIFont.systemFont(ofSize: 11)
         itemLabel.textColor = .black
         detailLabel = UILabel()
         detailLabel.font = UIFont.systemFont(ofSize: 11)
@@ -70,11 +70,11 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
         //        image?.size = CGSize(width: self.view.bounds.size.width - 10, height: 10)
         //        imageView = UIImageView()
         //        imageView.image = image.re
-        imageView = UIImageView(image: ImageData.receiveImage)
-        labelOne = UILabel()
-        labelTwo = UILabel()
-        labelThree = UILabel()
-        labelFour = UILabel()
+        imageView = UIImageView(image: ImageData.repairHalfImage)
+        oneLabel = UILabel()
+        twoLabel = UILabel()
+        threeLabel = UILabel()
+        fourLabel = UILabel()
         stateLabel = UILabel()
         numberLabel = UILabel()
         stateRepairLabel = UILabel()
@@ -94,38 +94,38 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
         numberRepairLabel.font = UIFont.systemFont(ofSize: 11)
         
         
-        subViewOne.addSubview(detailRepairLabel)
-        subViewOne.addSubview(itemRepairLabel)
-        subViewOne.addSubview(locationRepairLabel)
-        subViewOne.addSubview(timeRepairLabel)
-        subViewOne.addSubview(itemLabel)
-        subViewOne.addSubview(detailLabel)
-        subViewOne.addSubview(locationLabel)
-        subViewOne.addSubview(timeLabel)
+        oneSubView.addSubview(detailRepairLabel)
+        oneSubView.addSubview(itemRepairLabel)
+        oneSubView.addSubview(locationRepairLabel)
+        oneSubView.addSubview(timeRepairLabel)
+        oneSubView.addSubview(itemLabel)
+        oneSubView.addSubview(detailLabel)
+        oneSubView.addSubview(locationLabel)
+        oneSubView.addSubview(timeLabel)
         
-        subViewTwo.addSubview(imageView)
-        subViewTwo.addSubview(subViewThree)
+        twoSubView.addSubview(imageView)
+        twoSubView.addSubview(threeSubView)
         
-        self.view.addSubview(subViewOne)
-        self.view.addSubview(subViewTwo)
-        self.view.addSubview(labelOne)
-        self.view.addSubview(labelTwo)
-        self.view.addSubview(labelThree)
-        self.view.addSubview(labelFour)
+        self.view.addSubview(oneSubView)
+        self.view.addSubview(twoSubView)
+        self.view.addSubview(oneLabel)
+        self.view.addSubview(twoLabel)
+        self.view.addSubview(threeLabel)
+        self.view.addSubview(fourLabel)
         let wid = self.view.bounds.width / 4
         
-        subViewOne.snp.makeConstraints { make in
+        oneSubView.snp.makeConstraints { make in
             make.left.equalTo(5)
             make.right.equalTo(-5)
             make.top.equalTo(70)
             make.height.equalTo(90)
         }
         
-        subViewTwo.snp.makeConstraints { make in
+        twoSubView.snp.makeConstraints { make in
             make.left.equalTo(5)
             make.right.equalTo(-5)
             make.top.equalTo(165)
-            make.height.equalTo(230)
+            make.height.equalTo(260)
         }
         
         itemRepairLabel.snp.makeConstraints { make in
@@ -185,10 +185,7 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
             make.bottom.equalTo(-6)
         }
         
-        itemLabel.text = "灯管"
-        detailLabel.text = "一个灯管坏了"
-        locationLabel.text = "诚园7斋A栋427寝室"
-        timeLabel.text = "2017-07-12 08:39:07"
+        itemLabel.font = UIFont.systemFont(ofSize: 13)
         
         imageView.snp.makeConstraints { make in
             make.right.equalTo(0);
@@ -197,61 +194,61 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
             make.height.equalTo(0.04 * (self.view.bounds.width - 10))
         }
         
-        labelOne.text = "已上报"
-        labelOne.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        oneLabel.text = "已上报"
+        oneLabel.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
         //labelOne.alpha = 0.5
-        labelOne.textAlignment = .center
-        labelOne.font = UIFont.systemFont(ofSize: 10)
-        labelOne.snp.makeConstraints { make in
+        oneLabel.textAlignment = .center
+        oneLabel.font = UIFont.systemFont(ofSize: 10)
+        oneLabel.snp.makeConstraints { make in
             make.width.equalTo(wid)
             make.height.equalTo(15)
             make.top.equalTo(200)
             make.left.equalTo(0)
         }
         
-        labelTwo.text = "已接受"
-        labelTwo.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        twoLabel.text = "已接受"
+        twoLabel.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
         //labelTwo.alpha = 0.5
-        labelTwo.textAlignment = .center
-        labelTwo.font = UIFont.systemFont(ofSize: 10)
-        labelTwo.snp.makeConstraints { make in
+        twoLabel.textAlignment = .center
+        twoLabel.font = UIFont.systemFont(ofSize: 10)
+        twoLabel.snp.makeConstraints { make in
             make.width.equalTo(wid)
             make.height.equalTo(15)
             make.top.equalTo(200)
             make.left.equalTo(wid)
         }
         
-        labelThree.text = "已维修"
-        labelThree.textColor = UIColor.black
-        labelThree.alpha = 0.5
-        labelThree.textAlignment = .center
-        labelThree.font = UIFont.systemFont(ofSize: 10)
-        labelThree.snp.makeConstraints { make in
+        threeLabel.text = "已维修"
+        threeLabel.textColor = UIColor(red: 0.55, green: 0.78, blue: 0.59, alpha: 1.00)
+        //labelThree.alpha = 0.5
+        threeLabel.textAlignment = .center
+        threeLabel.font = UIFont.systemFont(ofSize: 10)
+        threeLabel.snp.makeConstraints { make in
             make.width.equalTo(wid)
             make.height.equalTo(15)
             make.top.equalTo(200)
             make.left.equalTo(wid * 2)
         }
         
-        labelFour.text = "已完成"
-        labelFour.textColor = UIColor.black
-        labelFour.alpha = 0.5
-        labelFour.textAlignment = .center
-        labelFour.font = UIFont.systemFont(ofSize: 10)
-        labelFour.snp.makeConstraints { make in
+        fourLabel.text = "已完成"
+        fourLabel.textColor = UIColor.black
+        fourLabel.alpha = 0.5
+        fourLabel.textAlignment = .center
+        fourLabel.font = UIFont.systemFont(ofSize: 10)
+        fourLabel.snp.makeConstraints { make in
             make.width.equalTo(wid)
             make.height.equalTo(15)
             make.top.equalTo(200)
             make.left.equalTo(wid * 3)
         }
         
-        subViewThree.snp.makeConstraints { make in
+        threeSubView.snp.makeConstraints { make in
             make.left.equalTo(0);
             make.right.equalTo(0)
             make.height.equalTo(1)
             make.top.equalTo(60)
         }
-        subViewThree.alpha = 0.5
+        threeSubView.alpha = 0.5
         
         
         
@@ -263,7 +260,7 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
         tabelView.estimatedRowHeight = 50
         tabelView.rowHeight = UITableViewAutomaticDimension
         tabelView.isScrollEnabled = false
-        subViewTwo.addSubview(tabelView)
+        twoSubView.addSubview(tabelView)
         tabelView.snp.makeConstraints { make in
             make.left.equalTo(0)
             make.right.equalTo(0)
@@ -271,50 +268,71 @@ class SecondProgressRateController: UIViewController, UITableViewDelegate, UITab
             make.bottom.equalTo(-35)
         }
         
-        Button = UIButton(title: "维修完成，去评价")
+        Button = UIButton(title: "删除报修单")
         Button.setTitleColor(UIColor.black, for: .normal)
-        subViewTwo.addSubview(Button)
+        twoSubView.addSubview(Button)
         Button.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        Button.layer.borderColor = UIColor.darkGray.cgColor
+        Button.layer.borderWidth = 0.5
         Button.layer.cornerRadius = 5
-        Button.backgroundColor = UIColor(red: 254.0 / 255.0, green: 210.0 / 255.0, blue: 44.0 / 255.0, alpha: 1.0)
         Button.snp.makeConstraints { make in
-            make.centerX.equalTo(subViewTwo)
-            make.width.equalTo(110)
+            make.centerX.equalTo(twoSubView)
+            make.width.equalTo(80)
             make.height.equalTo(25)
             make.bottom.equalTo(-5)
         }
         Button.addTarget(self, action: #selector(clickMe), for: .touchUpInside)
+        Button.isEnabled = false
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
         
     }
     
-    func clickMe() -> Void {
-        let rvc = EvaluateViewController()
-        self.navigationController?.pushViewController(rvc, animated: true)
+    func clickMe() {
+        activityIndicator.startAnimating()
+        UploadRepairApi.deleteRepair(id: list[1], success: { () in
+            self.activityIndicator.stopAnimating()
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+        }, failure: { error in
+            print(error)
+            self.activityIndicator.stopAnimating()
+        })
     }
     
+}
+
+extension FiveProgressRateController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return list.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListCell
-        if(indexPath.row == 0) {
-            cell.labelLeft.text = "维修状态"
-            cell.labelRight.text = "维修方已接受报修信息\n(2016-07-13 14:04:29)\n报修信息已提交至维修方，请耐心等候\n(2017-03-13 13:34:09)"
-        } else if(indexPath.row == 1) {
-            cell.labelLeft.text = "报修单号"
-            cell.labelRight.text = "126326329"
-        } else if(indexPath.row == 2) {
-            cell.labelLeft.text = "维修负责人"
-            cell.labelRight.text = "王师傅"
-        } else if(indexPath.row == 3) {
-            cell.labelLeft.text = "联系电话"
-            cell.labelRight.text = "3223674242"
+        if indexPath.row == 0 {
+            cell.leftLabel.text = "维修状态"
+            //cell.labelRight.text = list[0]
+            let attrString = NSMutableAttributedString(string: list[0], attributes: [NSForegroundColorAttributeName: UIColor.black])
+            let range = NSRange(location: 0, length: 43)
+            attrString.addAttributes([NSForegroundColorAttributeName: UIColor.red], range: range)
+            cell.rightLabel.attributedText = attrString
+            
+        } else if indexPath.row == 1 {
+            cell.leftLabel.text = "报修单号"
+            cell.rightLabel.text = list[1]
+        } else if indexPath.row == 2 {
+            cell.leftLabel.text = "维修负责人"
+            cell.rightLabel.text = list[2]
         } else {
-            cell.labelLeft.text = "预计维修时间"
-            cell.labelRight.text = "2016-03-27"
+            cell.leftLabel.text = "联系电话"
+            cell.rightLabel.text = list[3]
         }
         return cell
     }
     
 }
+

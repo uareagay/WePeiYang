@@ -6,9 +6,7 @@
 //  Copyright © 2017年 twtstudio. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
 class EvaluateViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,13 +20,18 @@ class EvaluateViewController: UIViewController, UITextFieldDelegate {
     var starFirstView: ComplaintStarView!
     var starSecondView: ComplaintStarView!
     var starThirdView: ComplaintStarView!
+    var id: String!
+    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         let alert = UIAlertController(title: nil, message: "请您认真对维修工作进行评价，这将关系到工人的绩效评定", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "稍后评价", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "稍后评价", style: .default, handler: {
+            (alert: UIAlertAction!) in
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+        }))
         alert.addAction(UIAlertAction(title: "现在就去", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
@@ -160,8 +163,67 @@ class EvaluateViewController: UIViewController, UITextFieldDelegate {
         submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         self.view.backgroundColor = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
         self.title = "评价"
+        submitButton.addTarget(self, action: #selector(clickMe), for: .touchUpInside)
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
         
     }
+    
+    func clickMe() {
+        
+        //        let alert = UIAlertController(title: nil, message: "请确认填写信息无误", preferredStyle: .alert)
+        //        self.present(alert, animated: true, completion: nil)
+        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        //            self.presentedViewController?.dismiss(animated: true, completion: nil)
+        //        }
+        
+        
+        //        var complaintReasonTextField: UITextField!
+        //        var complaintDetailTextView: UITextView!
+        //
+        
+        if evaluateTextField.hasText {
+            
+            var dic: [String : Any] = [String : Any]()
+            dic["order_id"] = id
+            dic["comment"] = evaluateTextField.text
+            dic["star_1"] = String(Int(starFirstView.rating))
+            dic["star_2"] = String(Int(starSecondView.rating))
+            dic["star_3"] = String(Int(starThirdView.rating))
+            //dic["Authorization"] = TwTUser.shared.token!
+            submitButton.isEnabled = false
+            activityIndicator.startAnimating()
+            
+            UploadRepairApi.submitEvaluation(diction: dic, success: { (victory) in
+                self.activityIndicator.stopAnimating()
+                let vc = OperationDetail()
+                if victory == true {
+                    vc.check(submitSituation: true, complaintSituation: true, locationSituation: false)
+                } else {
+                    vc.check(submitSituation: false, complaintSituation: true, locationSituation: false)
+                    self.submitButton.isEnabled = true
+                }
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }, failure: { error in
+                print(error)
+                self.submitButton.isEnabled = true
+            })
+            
+        } else {
+            
+            let alert = UIAlertController(title: nil, message: "请确认填写信息无误", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.presentedViewController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
